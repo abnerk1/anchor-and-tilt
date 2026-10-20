@@ -84,7 +84,7 @@ Educational project. The output of this rubric is not individual investment advi
 
 Abner Araujo. Finance professional (ANBIMA C-PRO I), building rules-based investment tooling with AI agents.
 
-Related: [skills-acoes-b3](https://github.com/abnerk1/skills-acoes-b3), deterministic valuation skills for Brazilian stocks and REITs (FIIs).
+Related: [skills-b3](https://github.com/abnerk1/skills-b3), deterministic valuation skills for Brazilian stocks and REITs (FIIs), and [global-equity-valuation](https://github.com/abnerk1/global-equity-valuation), the same rules-based approach for US stocks and ADRs.
 
 ## License
 
