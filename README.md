@@ -10,7 +10,7 @@ Ask a large language model for "a good ETF portfolio" twice and you will often g
 
 Anchor & Tilt turns an investment philosophy into an explicit rubric that an AI agent must follow step by step:
 
-- **Intake before advice.** The agent must collect seven parameters (risk profile, spending currency, home bias, tilts, alternatives, real estate, horizon) and may not infer them.
+- **Intake before advice.** The agent must collect eight parameters (risk profile, spending currency, home bias, tilts, alternatives, real estate, horizon, operating cash) and may not infer them.
 - **A fixed build order.** Allocations are reserved in a set sequence, and the global core absorbs whatever is left. Order is what makes the output reproducible.
 - **Hard guardrails and red flags.** Limits that override preferences, and checks that reject a recommendation outright.
 - **No silent assumptions.** Any number not documented in the rubric has to be flagged in the output.
@@ -20,7 +20,7 @@ The rubric was run on Claude, ChatGPT, Gemini, and Grok while it was being writt
 ## How it works
 
 ```
-Intake (7 questions)
+Intake (8 questions)
   │
   ├─ 1. Risk profile ............ fixed income / equity split (80/20, 50/50, 20/80)
   ├─ 2. Home bias ............... 10–15%, routed by country classification, capped at 20%
@@ -28,8 +28,10 @@ Intake (7 questions)
   ├─ 4. Commodities/alternatives  2.5% each, up to 2 (aggressive) or 1 (moderate/conservative)
   ├─ 5. Tilts ................... at most 2, investor's choice
   ├─ 6. Satellites .............. optional single-country bet, max 5%, with disclaimer
-  ├─ 7. Anchor .................. VT absorbs the equity remainder, BNDW the fixed-income remainder
-  └─ 8. Check ................... sums to 100%, limits respected, red flags cleared
+  ├─ 7. Operating cash .......... optional, 2% in a money market fund, out of fixed income
+  ├─ 8. Anchor .................. VT absorbs the equity remainder, BNDW the fixed-income remainder
+  ├─ 9. Check ................... sums to 100%, limits respected, red flags cleared
+  └─ 10. Vanguard benchmark ..... compares with the official Core Series model; never changes the weights
 ```
 
 When a preference conflicts with the risk profile, a fixed priority order decides, and the agent has to say what it cut and why. A conservative investor who asks for 10% in Bitcoin gets 2.5% and an explanation, never a silent yes or a silent no.
@@ -41,9 +43,8 @@ An aggressive investor in Brazil who wants home bias, real estate, gold and Bitc
 | Fund | Role | Target | Range |
 |---|---|---|---|
 | VT | Global equity anchor | 35% | 30–40% |
-| BNDW | Global fixed-income anchor | 15% | 10–20% |
+| BNDW | Global fixed-income anchor | 20% | 15–25% |
 | VWO | Home bias, emerging equities | 10% | 5–15% |
-| VWOB | Home bias, emerging debt | 5% | 0–10% |
 | VNQ | US real estate | 5% | 0–10% |
 | VNQI | International real estate | 5% | 0–10% |
 | LRGF | Tilt: multifactor | 10% | 5–15% |
@@ -61,6 +62,7 @@ More cases, including a conservative investor whose request is capped by the rub
 - **Real estate at 5–10%, not the 25% of some popular frameworks.** Real estate carries equity-like risk with returns closer to fixed income, and any departure from a well-known framework has to be justified with data.
 - **Choosing between competing ETFs works like a sports league table.** A win on a criterion earns 3 points and a tie earns 1. Liquidity, AUM, and fee weigh the most. The rubric documents why IAU beat GLD, why BNDW beat BND and AGG, and the one case where AUM alone was decisive (IBIT).
 - **The 3% rule targets single underlying assets** (one commodity, one coin, one stock), not diversified single-country ETFs.
+- **Calibrated against Vanguard, but not copied.** The emerging-market routing follows Vanguard's Dynamic ETF Series (no emerging debt for aggressive investors, more debt than equities for conservative ones), and every portfolio ends with a comparison against the matching Core Series model. The rubric's fixed income/equity split stays deliberately more conservative than Vanguard's, and that difference is documented.
 - **Known gaps are written down.** The agent is told not to resolve them on its own.
 
 ## Use it
@@ -73,7 +75,7 @@ More cases, including a conservative investor whose request is capped by the rub
 
 - The fund universe is US-listed ETFs, mostly Vanguard and similar low-cost funds. Availability and taxes differ by country of residence.
 - Splits and targets come from calibrated judgment (e.g., the 80/20 home-bias heuristic), not from an optimizer.
-- Three known gaps are open (see the end of the skill).
+- Two known gaps are open (see the end of the skill).
 - Fund data such as fees, AUM, and liquidity change over time. The rubric requires confirming figures in primary sources before delivery.
 
 ## Disclaimer

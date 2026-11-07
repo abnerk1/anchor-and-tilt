@@ -1,6 +1,6 @@
 # Worked examples
 
-Each case follows the build order in the skill. Targets add up to 100%, and each range is the target ± 5 percentage points, except the commodities/alternatives layer (C4), which has its own range.
+Each case follows the build order in the skill. None of them chooses operating cash (C8), so that step is skipped. Targets add up to 100%, and each range is the target ± 5 percentage points, except the commodities/alternatives layer (C4), which has its own range.
 
 ## 1. Aggressive, Brazil, everything on
 
@@ -16,13 +16,13 @@ Each case follows the build order in the skill. Targets add up to 100%, and each
 | Step | Rule | Allocation |
 |---|---|---|
 | 1. Risk profile | C1: aggressive → 20/80 | Fixed income 20%, equities 80% |
-| 2. Home bias | D2: emerging, aggressive | VWO 10% (equities) + VWOB 5% (fixed income) |
+| 2. Home bias | D2: emerging, aggressive | VWO 10% (equities); no VWOB in the aggressive profile |
 | 3. Real estate | C5: aggressive, 10% via VNQ + VNQI 50/50 | VNQ 5% + VNQI 5% |
 | 4. Alternatives | C4: up to 2 at 2.5% each; D3 winners | IAU 2.5% + IBIT 2.5% |
 | 5. Tilts | C3: 2 tilts, equal conviction → 10/10 | LRGF 10% + VGT 10% (derived by League Table) |
-| 7. Anchor | C1b: residuals | VT = 80 − 10 − 10 − 5 − 20 = **35%**; BNDW = 20 − 5 = **15%** |
+| 8. Anchor | C1b: residuals | VT = 80 − 10 − 10 − 5 − 20 = **35%**; BNDW = **20%** |
 
-The LRGF and VGT choices are not pre-documented in D3, so the output must say they were derived by League Table.
+The LRGF and VGT choices are not pre-documented in D3, so the output must say they were derived by League Table. Step 10 then compares the result with the Vanguard Core Series 80/20 sleeve (Layer E), without changing any weight.
 
 **Total: 100%.**
 
@@ -43,7 +43,7 @@ The LRGF and VGT choices are not pre-documented in D3, so the output must say th
 | 3. Real estate | C5: moderate, 5% via REET | REET 5% |
 | 4. Alternatives | C4: 1 position at 2.5% | IAU 2.5% |
 | 5. Tilts | none → back to the core | none |
-| 7. Anchor | C1b and C7: VT absorbs the 2.5% fraction | VT = 50 − 10 − 5 − 2.5 = **32.5%**; BNDW **50%** |
+| 8. Anchor | C1b and C7: VT absorbs the 2.5% fraction | VT = 50 − 10 − 5 − 2.5 = **32.5%**; BNDW **50%** |
 
 **Total: 100%.**
 
@@ -62,7 +62,7 @@ The LRGF and VGT choices are not pre-documented in D3, so the output must say th
 | 1. Risk profile | C1: conservative → 80/20 | Fixed income 80%, equities 20% |
 | 2. Home bias | D2: United States, conservative | VTI 10% |
 | 4. Alternatives | C4: conservative, 1 position, target 2.5% | IBIT **2.5%**, not the 10% requested |
-| 7. Anchor | C1b: residuals | VT = 20 − 10 − 2.5 = **7.5%**; BNDW **80%** |
+| 8. Anchor | C1b: residuals | VT = 20 − 10 − 2.5 = **7.5%**; BNDW **80%** |
 
 **Total: 100%.**
 
