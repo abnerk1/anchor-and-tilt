@@ -23,10 +23,12 @@ General rule of conduct: **do not improvise rules that are not written here.** W
 4. **Commodities/alternatives** → reserves according to the risk profile (C4)
 5. **Tilts** → reserves up to 2 tilts (C3)
 6. **Optional satellites** → EWZ and similar, if requested (C6)
-7. **VT and BNDW absorb the remainder**: VT takes the equity remainder, BNDW the fixed-income remainder
-8. **Check**: total = 100%, no limit breached, risk profile respected, red flags checked
+7. **Optional operating cash** → reserves up to 2% of the fixed-income sleeve, if chosen (C8)
+8. **VT and BNDW absorb the remainder**: VT takes the equity remainder, BNDW the fixed-income remainder
+9. **Check**: total = 100%, no limit breached, risk profile respected, red flags checked
+10. **Vanguard benchmark** → compares the final portfolio with the equivalent official model (Layer E). It is informational only: **it never changes the portfolio built in steps 1–9.**
 
-**Which sleeve each component comes from**: emerging-market home bias is split (VWO → equities, VWOB → fixed income); developed-market home bias is entirely equities; real estate, tilts, satellites, and the commodities/alternatives layer all come out of the **equity** sleeve.
+**Which sleeve each component comes from**: emerging-market home bias is split (VWO → equities, VWOB → fixed income) in the profiles where VWOB exists (D2); developed-market home bias is entirely equities; real estate, tilts, satellites, and the commodities/alternatives layer all come out of the **equity** sleeve; operating cash comes out of the **fixed-income** sleeve.
 
 **Priority hierarchy.** When the investor's preference conflicts with the profile limit, the higher-priority rule wins:
 
@@ -34,7 +36,7 @@ General rule of conduct: **do not improvise rules that are not written here.** W
 
 A conservative investor may *ask* for 10% Bitcoin and 20% in tilts; the agent **applies the profile limit and states explicitly what was reduced and why**. It neither obeys nor silently ignores the request.
 
-**Worked close-out** (aggressive, Brazil, 2 tilts, real estate 10%, 2 commodities): fixed income 20% = VWOB 5% + BNDW 15%; equities 80% = VWO 10% + real estate 10% + commodities 5% + tilts 20% + VT 35%. Total 100%, which reproduces the model portfolio.
+**Worked close-out** (aggressive, Brazil, 2 tilts, real estate 10%, 2 commodities, no cash): fixed income 20% = BNDW 20%; equities 80% = VWO 10% + real estate 10% + commodities 5% + tilts 20% + VT 35%. Total 100%. (Revised in Nov 2026: the aggressive profile no longer holds VWOB; see D2.)
 
 ---
 
@@ -60,6 +62,7 @@ Collect all of them before building:
 5. **Commodities/alternatives**: yes or no, and which ones (e.g., gold, Bitcoin).
 6. **Real estate**: yes or no.
 7. **Investment horizon.**
+8. **Operating cash**: yes or no to keeping up to 2% in a money market fund inside the portfolio for rebalancing (C8). Default: no.
 
 ---
 
@@ -77,15 +80,17 @@ Mental model: the efficient frontier. Because the exact optimal point is unknown
 
 Rationale: in pure logic, the aggressive investor would be 100% equities; they love returns and do not care about risk. The fixed-income sleeve exists because an advisory role has to keep their feet on the ground, not because fixed income wins on points. The conservative profile follows the inverse logic.
 
+**Documented difference from Vanguard** (Dynamic ETF Series, checked in Nov 2026): the rubric holds less equity than Vanguard in every profile: conservative 15–25% vs. 25–35% equity, moderate 40–60% vs. 55–65%, aggressive 75–85% vs. 85–95%. **The difference is deliberate** (the "feet on the ground" above) and the agent must not correct it. If the user questions it, explain the difference with these figures and the rationale.
+
 ### C1b. VT and BNDW are residual components
 
-The 35% VT in the model portfolio is **not a universal rule**. It is the result of the specific aggressive case after every preference has been met. VT absorbs the remainder of the equity sleeve; BNDW absorbs the remainder of the fixed-income sleeve (BNDW must also absorb, because there may be additional exposure inside fixed income itself, such as VWOB).
+The 35% VT in the model portfolio is **not a universal rule**. It is the result of the specific aggressive case after every preference has been met. VT absorbs the remainder of the equity sleeve; BNDW absorbs the remainder of the fixed-income sleeve (BNDW must also absorb, because there may be additional exposure inside fixed income itself, such as VWOB or operating cash).
 
 An aggressive investor without tilts, home bias, or alternatives may hold more than 35% VT; with everything switched on, less. The 30–40% range describes the model portfolio; it is not a universal limit.
 
 ### C2. Home bias
 
-- **Default target 15%**; **10%** for a moderate profile in a developed market. Set by the combination of risk profile and country classification (table D2). **This is not individual optimization**; it is a deterministic lookup.
+- **Default target 15%**. Exceptions: **10%** for a moderate profile in a developed market, and **10%** for an aggressive profile in an emerging market (VWO only; see D2). Set by the combination of risk profile and country classification (table D2). **This is not individual optimization**; it is a deterministic lookup.
 - Never exceed **20%**. Acceptable range: 10% to 20% (10, 12.5, 15, 17.5, and 20 are all valid).
   - *Precision note: the reference to "Pareto"/80-20 is a conceptual heuristic, not a mathematical derivation. The range and its midpoint came from judgment calibration.*
 - **Elective home bias** (a country other than the country of residence) is legitimate and **does not use up either of the 2 tilts**. It is **substitutive, not cumulative**: it redistributes the existing home-bias budget instead of adding on top. Someone living in Brazil who also wants US home bias does not end up with 15% + 15% = 30%, but with something like 10% Brazil + 5% US = 15%. **Total home-bias cap: 20%.** Example of legitimacy: a Ukrainian living temporarily in Israel because of the war is a tax resident of Israel but may keep home bias in Ukraine, because the intention to return keeps future spending exposure there. Run table D2 on the **elected** country.
@@ -127,8 +132,15 @@ Rationale (use it if the user questions the departure from popular frameworks su
 - Each allocation is given as a **range + target**: "VT between 30% and 40% (target: 35%)."
 - **Targets must add up to 100%.**
 - **Range = target ± 5 percentage points.** E.g., target 35% → 30-40%; target 10% → 5-15%.
-- **Targets are multiples of 5.** Exception: commodities (C4), with a fixed 2.5% target and their own ranges; they do not follow ±5, because 2.5% is already smaller than 5. When a moderate investor picks 1 commodity, the 2.5% comes out of the core (VT), which acts as the flexible slice that absorbs the leftover fraction so the total stays at 100%.
+- **Targets are multiples of 5.** Exceptions: commodities (C4), with a fixed 2.5% target and their own ranges, and operating cash (C8), with a fixed 2% target and a 0–2% range. Neither follows ±5, because both are smaller than 5. When a moderate investor picks 1 commodity, the 2.5% comes out of the core (VT); when the investor chooses cash, the 2% comes out of BNDW. VT and BNDW act as the flexible slices that absorb the leftover fractions so the total stays at 100%.
 - **Fallback for an undocumented target**: when a range exists but no explicit target, use the **range midpoint rounded to the nearest multiple of 5**, and **state in the output that it was assumed by fallback**, giving the user the chance to correct it.
+
+### C8. Operating cash (optional)
+
+- **Up to 2%**, via a money market fund (MMF) at the investor's own broker. Fixed target **2%** when chosen; **0% by default**.
+- Comes out of the **fixed-income** sleeve (BNDW absorbs 2 points less). It does not change the fixed income/equity split.
+- Purpose: liquidity to rebalance without selling assets. Calibrated by Vanguard's model portfolios, which keep 2% cash in every sleeve.
+- **It is not an emergency fund.** The emergency fund stays outside the investment portfolio; the output must make this clear if the investor confuses the two.
 
 ---
 
@@ -156,14 +168,18 @@ Criteria and relative weight:
 
 | Country classification | Fund(s) | Aggressive | Moderate | Conservative |
 |---|---|---|---|---|
-| Emerging (e.g., Brazil) | VWO (equities) + VWOB (fixed income) | 10% VWO + 5% VWOB (15%) | 5% VWO + 10% VWOB (15%) | 15% total (⚠️ split not defined; see Known gaps #2) |
+| Emerging (e.g., Brazil) | VWO (equities) + VWOB (fixed income) | **10% VWO + 0% VWOB (10%)** | 5% VWO + 10% VWOB (15%) | **5% VWO + 10% VWOB (15%)** |
 | Developed: Europe | VGK | 15% | 10% | 10% |
 | Developed: Pacific (e.g., Japan, Australia) | VPL | 15% | 10% | 10% |
 | Developed: outside Europe/Pacific/US | VEA | 15% | 10% | 10% |
 | United States | VTI | 15% | 10% | 10% |
 | Frontier | none | **No home bias**, even if the person wants it | **No home bias** | **No home bias** |
 
-**Why emerging and developed markets have different structures** (deliberate, not an inconsistency): emerging exposure can be implemented in both equities *and* fixed income, via VWO and VWOB, so it totals 15% and creates home bias in both asset classes. In developed markets, the v1 default implementation is mainly in equities, because of instrument availability.
+**Emerging-market calibration (Nov 2026, Vanguard Dynamic ETF Series):**
+- **Aggressive without VWOB**: Vanguard holds no emerging-market debt in its aggressive sleeves (VWOB only appears up to the moderate sleeve). The 5 points that used to be VWOB stay in BNDW, preserving the fixed income/equity split. Emerging home bias for the aggressive profile becomes 10%.
+- **Conservative 5% VWO + 10% VWOB**: in its conservative sleeve, Vanguard holds far more emerging-market debt than emerging equities (VWOB 7.3% vs. VWO 2.0%). The 5/10 split follows that proportion while respecting multiples of 5.
+
+**Why emerging and developed markets have different structures** (deliberate, not an inconsistency): emerging exposure can be implemented in both equities *and* fixed income, via VWO and VWOB, so in the moderate and conservative profiles it totals 15% and creates home bias in both asset classes. In developed markets, the v1 default implementation is mainly in equities, because of instrument availability.
 
 ### D3. Documented slot winners
 
@@ -178,8 +194,25 @@ Use these when the slot matches; do not re-derive:
 | Bitcoin | IBIT | AUM (the only case where AUM was directly decisive) |
 | Real estate (10% allocation, aggressive) | VNQ + VNQI | Fee: the pair is cheaper than REET |
 | Real estate (5% allocation, moderate) | REET | Simplicity: the pair's fee advantage does not justify holding 2 positions in a small slice |
+| Operating cash | Broker's MMF | Immediate liquidity inside the account; no ETF |
 
 For slots **not** listed here (e.g., a sector tilt the investor asks for, a commodity other than gold), **do not invent**: search, within the rubric's fund universe (Vanguard and equivalent low-cost, high-liquidity funds), for the ETF that best represents the requested exposure, apply D1, and **state in the output that the choice was derived by League Table, not pre-documented**. Example: healthcare tilt → VHT.
+
+---
+
+## Layer E: Vanguard benchmark (step 10, informational)
+
+After building and checking the portfolio, compare it with Vanguard's official model:
+
+1. Query the **Vanguard Advisor Tools** connector (`get_model_portfolios`) with `name: "Core Series"` and `classification: "etf"`.
+2. Pick the Core Series sleeve whose **equity percentage is closest to the portfolio's equity target** (conservative ~20%, moderate ~50%, aggressive ~80%). On a tie, use the more conservative sleeve.
+3. Show a short table comparing, by block, US equities, international equities, fixed income, and cash: the rubric's portfolio vs. the Vanguard model (VTI ≈ US equities; VXUS ≈ international equities; BND + BNDX ≈ fixed income). For VT, use the approximate US/international split reported by the source consulted, and state that it is an approximation.
+4. Explain the relevant deviations and where each comes from in 1–3 lines (e.g., a more conservative split per C1; tilts and alternatives that Vanguard does not use because they are discretionary choices).
+5. Close the block with the line: "Disclaimer: This is not official Vanguard advice."
+
+Rules:
+- **The benchmark never changes the portfolio.** The portfolio is the one from steps 1–9; the benchmark only adds context.
+- If the connector is not available, **skip the step and say so in the output**. Do not reconstruct Vanguard's model from memory.
 
 ---
 
@@ -207,6 +240,7 @@ What is mandatory:
 2. Rationale for each fund, anchored in the criteria of this skill.
 3. **Explicit statement of every assumption** made by fallback or by derivation outside what is documented.
 4. Mandatory disclaimers when applicable (single-country bet; high real estate in a conservative profile).
+5. The **Vanguard benchmark** block (Layer E), or the statement that it could not be done.
 
 ---
 
@@ -215,5 +249,6 @@ What is mandatory:
 Ask the user or state the assumption prominently in the output:
 
 1. **Real estate instrument for the conservative profile**: the instrument rule calls for REET for 5% allocations (simplicity), but the 50/50 split decision was proposed as VNQ 2.5% + VNQI 2.5%. Both cannot hold at once, and 2.5% per fund also collides with the multiples-of-5 rule.
-2. **VWO/VWOB split for the conservative profile** (emerging-market home bias, 15% total) is not defined.
-3. **Instruments outside D3** (other commodities, other tilt sectors): derive them via D1 and flag them.
+2. **Instruments outside D3** (other commodities, other tilt sectors): derive them via D1 and flag them.
+
+*Resolved in Nov 2026: VWO/VWOB split for the conservative profile (now 5% + 10%; see D2).*
